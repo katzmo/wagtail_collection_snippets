@@ -1,0 +1,17 @@
+{% extends "wagtailadmin/generic/chooser/chooser.html" %}
+
+{% load i18n wagtailadmin_tags %}
+
+{% block filter_form %}
+    <form data-chooser-modal-search
+          action="{{ results_url }}"
+          method="get"
+          autocomplete="off"
+          novalidate>
+        <ul class="fields">
+            {% for field in filter_form %}
+                <li>{% include "wagtailadmin/shared/field.html" with field=field %}</li>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock filter_form %}
