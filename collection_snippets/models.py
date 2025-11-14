@@ -46,7 +46,7 @@ class Snippet(
 
     def __str__(self):
         """Custom string representation (used in the admin UI)."""
-        return self.title
+        return f"{self.title}"
 
     def get_preview_template(self, request, mode_name):
         """Provide a template for the preview."""
@@ -54,19 +54,6 @@ class Snippet(
             f"{self._meta.app_label}/previews/{self._meta.model_name}.html",
             "collectionsnippets/preview.html",
         ]
-
-    def get_preview_context(self, request, mode_name):
-        """Use settings context of the first accessible site for the snippets preview."""
-        context = super().get_preview_context(request, mode_name)
-        site = (
-            list(request.user.get_explorable_sites())[0]
-            if hasattr(request, "user")
-            else None
-        )
-        context["settings"] = wagtail.contrib.settings.context_processors.SettingProxy(
-            request_or_site=site or request
-        )
-        return context
 
 
 @django.dispatch.receiver((wagtail.signals.published, wagtail.signals.unpublished))

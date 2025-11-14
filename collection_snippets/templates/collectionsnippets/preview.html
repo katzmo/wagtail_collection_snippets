@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ object.locale.language_code }}">
-    <head>
-        <title>{{ object.title }}</title>
-        <link rel="stylesheet"
-              type="text/css"
-              href="{{ settings.wistsites.ThemeSettings.assets_css }}">
-        {% block extra_css %}{% endblock %}
-    </head>
-    <body>
-        {% block content %}{% endblock %}
-    </body>
+
+<head>
+    <title>{{ object.title }}</title>>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+
 </html>
